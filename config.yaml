@@ -1,0 +1,9 @@
+name: model-server
+namespace: mayxe
+endpoint: 0.0.0.0:10010
+secret-name: seldon-init-container-secret
+mysql:
+  addr: 10.0.37.43:30550
+  user: root
+  pass: 
+  db_name: test

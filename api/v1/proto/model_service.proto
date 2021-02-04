@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = ".;proto";
+
+import "google/api/annotations.proto";
+
+// The book service makes it possible to get or set book's detail information
+service modelService {
+    // get book information
+    rpc Publish (publishRequest) returns (response) {
+        option (google.api.http) = {
+            post: "/api/v1/model/predict/publish"
+            body: "*"
+        };
+    };
+    rpc GetServiceProtocol(Null) returns (protocolResponse){
+        option (google.api.http) = {
+            get: "/api/v1/model/predict/protocol"
+        };
+    }
+    rpc GetServerParameters(Null) returns (paramsResponse){
+        option (google.api.http) = {
+            get: "/api/v1/model/predict/params"
+        };
+    }
+}
+
+message Null {
+
+}
+message response {
+    int32 code = 1;
+    string messsage = 2;
+}
+
+message protocolResponse {
+    int32 code = 1;
+    string messsage = 2;
+    //protocol name and value
+    map<string, int32> data = 3;
+}
+message server{
+    string name = 1;
+    map<int32, parameter> param = 2;
+}
+message parameter {
+    string name  = 1;
+    string type = 2;
+    map<int32, string> values = 3;
+}
+message paramsResponse {
+    int32 code = 1;
+    string messsage = 2;
+    map<int32,server> data = 3;
+}
+message publishRequest {
+    int32 model_id = 1;
+    int32 protocol = 2;
+    string service_name = 3;
+    //parameter index and value index
+    map<int32, int32> params = 4; 
+}

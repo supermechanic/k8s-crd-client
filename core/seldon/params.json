@@ -1,0 +1,5 @@
+{
+    "code": 0,
+    "message":"ok",
+    "data":{"1":{"Name":"SKLEARN_SERVER","Params":{"1":{"Name":"method","Type":"STRING","Values":{"1":"predict","2":"predict_prob:default","3":"dicision_function"}}}},"2":{"Name":"TENSORFLOW_SERVER","Params":{}}}
+}

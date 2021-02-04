@@ -5,7 +5,8 @@ import (
 	"k8s.io/client-go/rest"
 )
 
-var client dynamic.Interface
+//DynamicClient k8s dynanic client
+var DynamicClient dynamic.Interface
 var err error
 
 func init() {
@@ -13,7 +14,7 @@ func init() {
 	if err != nil {
 		panic(err.Error())
 	}
-	client, err = dynamic.NewForConfig(config)
+	DynamicClient, err = dynamic.NewForConfig(config)
 	if err != nil {
 		panic(err)
 	}
